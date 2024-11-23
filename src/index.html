@@ -6,19 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <link rel="stylesheet" href="./css/styles.css" />
+ 
+
   </head>
   <body>
     <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
 
     <main>
       <!-- Loads the specified .html file -->
-      <load src="./1-gallery.html" />
-      <load src="./2-form.html" />
+      <nav>
+        <ul>
+          <!-- Посилання на сторінки завдань -->
+          <li><a href="/1-gallery.html">Task 1: Gallery</a>
+          <script src="./js/1-gallery.js"></script>
+        </li>
+          <li><a href="/2-form.html">Task 2: Feedback Form</a>
+          <script src="./js/2-form.js"></script>
+          </li>
+        </ul>
+      </nav>
   
     </main>
 
     <load src="./partials/footer.html" />
-
+s
     <script type="module" src="./main.js"></script>
   </body>
 </html>

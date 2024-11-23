@@ -19,6 +19,9 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
       rollupOptions: {
         input: glob.sync('./src/*.html'),
+        main: 'index.html',         // Головна сторінка
+        gallery: '1-gallery.html',  // Галерея
+        form: '2-form.html',        // Форма
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
