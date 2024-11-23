@@ -4,6 +4,11 @@ import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
+import { defineConfig } from 'vite';
+
+
+
+
 export default defineConfig(({ command }) => {
   return {
     define: {
@@ -46,3 +51,8 @@ export default defineConfig(({ command }) => {
     ],
   };
 });
+
+import { defineConfig } from 'vite';
+
+
+
