@@ -9,6 +9,11 @@ const images = [
     description: 'Hokkaido Flower',
   },
   {
+    preview: './assets/images/small-image1.jpg',
+    original: './assets/images/large-image1.jpg',
+    description: 'Image 1 Description',
+},
+  {
     preview: 'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg',
     original: 'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg',
     description: 'Container Haulage Freight',
@@ -72,3 +77,4 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionPosition: 'bottom',
   captionDelay: 250,
 });
+
