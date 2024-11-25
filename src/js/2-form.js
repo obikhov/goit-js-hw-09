@@ -1,41 +1,44 @@
 const form = document.querySelector('.feedback-form');
-const LOCAL_STORAGE_KEY = 'feedback-form-state';
+const emailInput = form.elements.email;
+const messageTextarea = form.elements.message;
+const STORAGE_KEY = 'feedback-form-state';
 
 let formData = {
   email: '',
   message: '',
 };
 
-// Відновлення даних при завантаженні сторінки
-document.addEventListener('DOMContentLoaded', () => {
-  const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+// Завантаження збережених даних із localStorage
+const loadFormData = () => {
+  const savedData = localStorage.getItem(STORAGE_KEY);
   if (savedData) {
     formData = JSON.parse(savedData);
-    form.elements.email.value = formData.email || '';
-    form.elements.message.value = formData.message || '';
+    emailInput.value = formData.email || '';
+    messageTextarea.value = formData.message || '';
   }
+};
+
+loadFormData();
+
+// Обробка події input
+form.addEventListener('input', event => {
+  formData[event.target.name] = event.target.value.trim();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 });
 
-// Збереження даних у локальне сховище
-form.addEventListener('input', (event) => {
-  const { name, value } = event.target;
-  formData[name] = value.trim();
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
-});
-
-// Сабміт форми
-form.addEventListener('submit', (event) => {
+// Обробка події submit
+form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const { email, message } = formData;
-  if (!email || !message) {
+  if (!formData.email || !formData.message) {
     alert('Fill please all fields');
     return;
   }
 
   console.log('Submitted data:', formData);
 
-  localStorage.removeItem(LOCAL_STORAGE_KEY);
-  formData = { email: '', message: '' };
+  // Очищення форми та localStorage
   form.reset();
+  localStorage.removeItem(STORAGE_KEY);
+  formData = { email: '', message: '' };
 });
